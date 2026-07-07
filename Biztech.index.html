@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ADVANCED SEO -->
+    <title>Biztech | Premium Next-Gen Tech Storefront</title>
+    <meta name="description" content="Biztech offers high-performance laptops, audio gear, and professional gadgets. Engineered for the future.">
+    <meta name="keywords" content="Laptops, Gaming Gear, Professional Tech, Biztech Pakistan, Premium Gadgets">
+    <link rel="canonical" href="https://biztech.com" />
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00F0FF',
+                        secondary: '#7000FF',
+                        dark: '#020204',
+                        card: 'rgba(15, 15, 25, 0.7)'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #020204; color: #fff; }
+        #canvas-container { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass:hover {
+            border-color: #00F0FF;
+            background: rgba(0, 240, 255, 0.05);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #00F0FF, #7000FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #00F0FF; border-radius: 10px; }
+
+        .active-link { color: #00F0FF !important; border-bottom: 2px solid #00F0FF; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 3D BACKGROUND CANVAS -->
+    <div id="canvas-container"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-[100] px-6 py-4">
+        <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-4 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <i data-lucide="zap" class="text-black fill-current"></i>
+                </div>
+                <span class="font-bold text-2xl tracking-tighter uppercase">Biztech</span>
+            </a>
+            
+            <div class="hidden lg:flex items-center gap-10 text-xs font-bold uppercase tracking-widest">
+                <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#catalog" class="hover:text-primary transition-colors">Inventory</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-2 glass rounded-full">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-primary text-black text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+                    Next-Gen Hardware Hub
+                </div>
+                <h1 class="text-6xl md:text-8xl font-extrabold leading-none mb-8">
+                    UPGRADE <br/> <span class="text-gradient">YOUR REALITY.</span>
+                </h1>
+                <p class="text-gray-400 text-lg max-w-md mb-10 leading-relaxed">
+                    Premium tech curated for high-performance individuals. From 128GB RAM Laptops to Studio Audio.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#catalog" class="px-10 py-5 bg-primary text-black font-bold rounded-xl hover:shadow-[0_0_40px_rgba(0,240,255,0.5)] transition-all">
+                        VIEW CATALOG
+                    </a>
+                    <a href="#about" class="px-10 py-5 glass rounded-xl font-bold">
+                        OUR STORY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="glass p-10 rounded-3xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl"></div>
+                    <h2 class="text-4xl font-bold mb-6">The Biztech <span class="text-primary">Vision</span></h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Founded in 2024, Biztech was built for those who refuse to settle for average hardware. We don't just sell gadgets; we provide the tools for the next generation of developers, designers, and gamers.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-sm font-bold">
+                            <i data-lucide="check-circle" class="text-primary w-5 h-5"></i> GLOBAL WARRANTY SUPPORT
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold">
+                            <i data-lucide="check-circle" class="text-primary w-5 h-5"></i> 24-HOUR STRESS TESTING
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold">
+                            <i data-lucide="check-circle" class="text-primary w-5 h-5"></i> DIRECT WHATSAPP CONSULTATION
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass p-8 rounded-2xl text-center">
+                        <h3 class="text-4xl font-bold text-primary mb-2">100+</h3>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Products</p>
+                    </div>
+                    <div class="glass p-8 rounded-2xl text-center">
+                        <h3 class="text-4xl font-bold text-secondary mb-2">24/7</h3>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Support</p>
+                    </div>
+                    <div class="glass p-8 rounded-2xl text-center">
+                        <h3 class="text-4xl font-bold text-white mb-2">1k+</h3>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Clients</p>
+                    </div>
+                    <div class="glass p-8 rounded-2xl text-center">
+                        <h3 class="text-4xl font-bold text-primary mb-2">100%</h3>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest">Authentic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section id="catalog" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div>
+                    <h2 class="text-5xl font-bold mb-4 uppercase tracking-tighter">Inventory</h2>
+                    <div id="filter-pills" class="flex flex-wrap gap-3"></div>
+                </div>
+                <div class="w-full md:w-80">
+                    <div class="relative">
+                        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"></i>
+                        <input type="text" id="search-input" oninput="handleSearch()" placeholder="Search 100+ products..." class="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:border-primary transition-all">
+                    </div>
+                </div>
+            </div>
+
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Products will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[150] hidden opacity-0 transition-opacity duration-500"></div>
+    <div id="cart-drawer" class="fixed right-0 top-0 h-full w-full max-w-md bg-[#0a0a0c] z-[200] border-l border-white/10 translate-x-full transition-transform duration-500 flex flex-col">
+        <div class="p-8 border-b border-white/10 flex items-center justify-between">
+            <h2 class="text-2xl font-bold uppercase tracking-tighter">Your Bay</h2>
+            <button onclick="toggleCart()"><i data-lucide="x" class="w-8 h-8"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-8 space-y-6"></div>
+        <div class="p-8 glass border-t border-white/10">
+            <div class="flex justify-between mb-6">
+                <span class="text-gray-500 uppercase text-xs font-bold">Subtotal</span>
+                <span id="cart-total" class="text-2xl font-bold text-primary">$0.00</span>
+            </div>
+            <button onclick="checkout()" class="w-full bg-primary text-black font-bold py-5 rounded-xl flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform">
+                CHECKOUT VIA WHATSAPP <i data-lucide="message-circle"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 1. CONFIGURATION
+        const WHATSAPP_NUMBER = "923144282654";
+        
+        // 2. PRODUCT DATA (Add up to 100+ items here)
+        const PRODUCTS = [
+            { id: 1, title: "MacBook Pro M3 Max", price: 3499, category: "Laptops", image: "https://images.unsplash.com/photo-1517336712462-70125227743e?q=80&w=800", desc: "128GB RAM, 2TB SSD, 16-inch Liquid Retina XDR." },
+            { id: 2, title: "Razer Blade 16", price: 2999, category: "Laptops", image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=800", desc: "RTX 4090, i9-14900HX, Dual Mode Mini-LED." },
+            { id: 3, title: "Sony WH-1000XM5", price: 399, category: "Audio", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800", desc: "Industry leading noise cancellation." },
+            { id: 4, title: "Keychron Q6 Pro", price: 210, category: "Peripherals", image: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=800", desc: "Full metal wireless mechanical keyboard." },
+            { id: 5, title: "Logitech MX Master 3S", price: 99, category: "Peripherals", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=800", desc: "Ultrafast scrolling, 8K DPI tracking." },
+            { id: 6, title: "Samsung Odyssey G9", price: 1299, category: "Displays", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=800", desc: "49-inch Curved Gaming Monitor." },
+            // To add 100 items, simply copy the objects above and change the ID and Title.
+        ];
+
+        let cart = {};
+        let currentCategory = 'All';
+        let searchQuery = '';
+
+        // 3. THREE.JS 3D BACKGROUND
+        function init3D() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            for (let i = 0; i < 5000; i++) {
+                vertices.push(THREE.MathUtils.randFloatSpread(2000)); // x
+                vertices.push(THREE.MathUtils.randFloatSpread(2000)); // y
+                vertices.push(THREE.MathUtils.randFloatSpread(2000)); // z
+            }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0x00F0FF, size: 2 }));
+            scene.add(particles);
+
+            camera.position.z = 1000;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                particles.rotation.x += 0.0005;
+                particles.rotation.y += 0.001;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // 4. CORE LOGIC
+        function init() {
+            lucide.createIcons();
+            init3D();
+            renderFilters();
+            renderProducts();
+        }
+
+        function renderFilters() {
+            const cats = ['All', ...new Set(PRODUCTS.map(p => p.category))];
+            document.getElementById('filter-pills').innerHTML = cats.map(cat => `
+                <button onclick="setCategory('${cat}')" class="px-6 py-2 rounded-full border font-bold text-[10px] uppercase tracking-widest transition-all
+                    ${currentCategory === cat ? 'bg-primary text-black border-primary' : 'border-white/10 text-gray-500 hover:border-primary/50'}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            renderFilters();
+            renderProducts();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value.toLowerCase();
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const filtered = PRODUCTS.filter(p => {
+                const matchesCat = currentCategory === 'All' || p.category === currentCategory;
+                const matchesSearch = p.title.toLowerCase().includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="glass rounded-3xl p-6 group">
+                    <div class="relative aspect-square rounded-2xl overflow-hidden mb-6 bg-black">
+                        <img src="${p.image}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
+                        <div class="absolute top-4 left-4 px-3 py-1 glass rounded-lg text-[10px] font-bold text-primary uppercase">${p.category}</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">${p.title}</h3>
+                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">${p.desc}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold">$${p.price}</span>
+                        <button onclick="addToCart(${p.id})" class="w-12 h-12 bg-primary text-black rounded-xl flex items-center justify-center hover:rotate-90 transition-all">
+                            <i data-lucide="plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        // 5. CART SYSTEM
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            const isOpen = drawer.style.transform === 'translateX(0%)';
+            drawer.style.transform = isOpen ? 'translateX(100%)' : 'translateX(0%)';
+            overlay.classList.toggle('hidden');
+            setTimeout(() => overlay.classList.toggle('opacity-0'), 10);
+            if (!isOpen) renderCart();
+        }
+
+        function addToCart(id) {
+            cart[id] = (cart[id] || 0) + 1;
+            updateCartCount();
+            const btn = event.currentTarget;
+            btn.classList.add('bg-white');
+            setTimeout(() => btn.classList.remove('bg-white'), 200);
+        }
+
+        function updateCartCount() {
+            const count = Object.values(cart).reduce((a, b) => a + b, 0);
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const items = Object.entries(cart);
+            let total = 0;
+
+            if (items.length === 0) {
+                container.innerHTML = `<div class="text-center py-20 text-gray-600 uppercase font-bold tracking-widest">Empty Bay</div>`;
+                document.getElementById('cart-total').innerText = `$0.00`;
+                return;
+            }
+
+            container.innerHTML = items.map(([id, qty]) => {
+                const p = PRODUCTS.find(x => x.id == id);
+                total += p.price * qty;
+                return `
+                    <div class="flex gap-4 items-center">
+                        <img src="${p.image}" class="w-16 h-16 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-sm">${p.title}</h4>
+                            <p class="text-primary font-bold">$${p.price}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="changeQty(${id}, -1)" class="text-gray-500">-</button>
+                            <span class="font-bold">${qty}</span>
+                            <button onclick="changeQty(${id}, 1)" class="text-gray-500">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('cart-total').innerText = `$${total.toLocaleString()}`;
+        }
+
+        function changeQty(id, delta) {
+            cart[id] += delta;
+            if (cart[id] <= 0) delete cart[id];
+            renderCart();
+            updateCartCount();
+        }
+
+        function checkout() {
+            const items = Object.entries(cart);
+            if (items.length === 0) return;
+            let msg = `*BIZTECH ORDER*\n------------------\n`;
+            items.forEach(([id, qty]) => {
+                const p = PRODUCTS.find(x => x.id == id);
+                msg += `• ${p.title} (x${qty})\n`;
+            });
+            msg += `------------------\nTotal: ${document.getElementById('cart-total').innerText}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
